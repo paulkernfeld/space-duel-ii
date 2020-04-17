@@ -5,11 +5,9 @@ use amethyst::{
     error::Error,
 };
 
-/// A bundle is a convenient way to initialise related resources, components and systems in a
-/// world. This bundle prepares the world for a game of pong.
-pub struct PongBundle;
+pub struct SpaceDuelBundle;
 
-impl<'a, 'b> SystemBundle<'a, 'b> for PongBundle {
+impl<'a, 'b> SystemBundle<'a, 'b> for SpaceDuelBundle {
     fn build(
         self,
         _world: &mut World,

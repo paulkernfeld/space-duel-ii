@@ -1,7 +1,5 @@
-//! Pong
-
 mod bundle;
-mod pong;
+mod game;
 mod systems;
 
 use amethyst::{
@@ -18,7 +16,7 @@ use amethyst::{
     utils::application_root_dir,
 };
 
-use crate::bundle::PongBundle;
+use crate::bundle::SpaceDuelBundle;
 use std::time::Duration;
 
 const ARENA_HEIGHT: f32 = 100.0;
@@ -27,7 +25,7 @@ const ARENA_WIDTH: f32 = 100.0;
 fn main() -> amethyst::Result<()> {
     amethyst::start_logger(Default::default());
 
-    use crate::pong::Pong;
+    use crate::game::Game;
 
     let app_root = application_root_dir()?;
 
@@ -42,7 +40,7 @@ fn main() -> amethyst::Result<()> {
         .with_bundle(
             InputBundle::<StringBindings>::new().with_bindings_from_file(key_bindings_path)?,
         )?
-        .with_bundle(PongBundle)?
+        .with_bundle(SpaceDuelBundle)?
         .with_bundle(UiBundle::<StringBindings>::new())?
         .with_bundle(
             RenderingBundle::<DefaultBackend>::new()
@@ -56,7 +54,7 @@ fn main() -> amethyst::Result<()> {
                 .with_plugin(RenderUi::default()),
         )?;
 
-    let mut game = Application::build(assets_dir, Pong::default())?
+    let mut game = Application::build(assets_dir, Game::default())?
         .with_frame_limit(
             FrameRateLimitStrategy::SleepAndYield(Duration::from_millis(2)),
             144,

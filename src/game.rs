@@ -8,12 +8,12 @@ use amethyst::{
 };
 
 #[derive(Default)]
-pub struct Pong {
+pub struct Game {
     ball_spawn_timer: Option<f32>,
     sprite_sheet_handle: Option<Handle<SpriteSheet>>,
 }
 
-impl SimpleState for Pong {
+impl SimpleState for Game {
     fn on_start(&mut self, data: StateData<'_, GameData<'_, '_>>) {
         let StateData { world, .. } = data;
 
