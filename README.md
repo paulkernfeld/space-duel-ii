@@ -8,6 +8,13 @@ I'm attempting to make a sequel to [Space Duel](https://paulkernfeld.com/2012/07
 
 The goals of this project are to have fun, learn some new things, and try to make a game!
 
+# TODO
+
+1. Investigate [Amethyst physics engine](https://docs.rs/amethyst_physics)
+2. Get the ship moving with fixed acceleration
+3. Ship bounces off edges
+4. Control ship with keyboard
+
 # Choosing a game engine
 
 **The result:** Amethyst seems to be most mature, well-documented, and doesn't explicitly not support MacOS
@@ -63,9 +70,3 @@ What I don't really need:
 *ggez is a Rust library to create a Good Game Easily.*
 
 - "Not officially supported but might work anyway: Mac, iOS" <- unfortunately I'm on MacOS
-
-# TODO
-
-1. Choose a game engine
-2. Come up with a minimal fun prototype
-3. Implement (in Rust)
