@@ -10,11 +10,12 @@ The goals of this project are to have fun, learn some new things, and try to mak
 
 To run this, do `cargo run`. It should "just work."
 
+To get involved, check out the issues page!
+
 # TODO
 
-1. Get the ship moving with fixed acceleration
-2. Ship bounces off edges
-3. Control ship with keyboard
+1. Ship bounces off edges
+2. Control ship with keyboard
 
 # Choosing a game engine
 
