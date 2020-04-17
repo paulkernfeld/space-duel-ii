@@ -8,6 +8,8 @@ I'm attempting to make a sequel to [Space Duel](https://paulkernfeld.com/2012/07
 
 The goals of this project are to have fun, learn some new things, and try to make a game!
 
+To run this, do `cargo run`. It should "just work."
+
 # TODO
 
 1. Investigate [Amethyst physics engine](https://docs.rs/amethyst_physics)
