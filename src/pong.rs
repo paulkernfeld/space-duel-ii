@@ -1,4 +1,4 @@
-use crate::{systems::ScoreText, Ball, Paddle, Side, ARENA_HEIGHT, ARENA_WIDTH};
+use crate::{systems::ScoreText, Ball, Paddle, Side, ARENA_HEIGHT, ARENA_WIDTH, Ship};
 use amethyst::{
     assets::{AssetStorage, Handle, Loader},
     core::{timing::Time, transform::Transform},
@@ -27,6 +27,7 @@ impl SimpleState for Pong {
         // `texture` is the pixel data.
         self.sprite_sheet_handle.replace(load_sprite_sheet(world));
         initialise_paddles(world, self.sprite_sheet_handle.clone().unwrap());
+        initialize_ship(world, self.sprite_sheet_handle.clone().unwrap());
         initialise_camera(world);
         initialise_audio(world);
         initialise_score(world);
@@ -134,6 +135,30 @@ fn initialise_paddles(world: &mut World, sprite_sheet_handle: Handle<SpriteSheet
         })
         .with(right_transform)
         .build();
+}
+
+fn initialize_ship(world: &mut World, sprite_sheet_handle: Handle<SpriteSheet>) {
+    let mut ship_transform = Transform::default();
+    ship_transform.set_translation_xyz(ARENA_WIDTH / 2.0, ARENA_HEIGHT / 2.0, 0.0);
+
+    let sprite_render = SpriteRender {
+        sprite_sheet: sprite_sheet_handle,
+        sprite_number: 0, // paddle is the first sprite in the sprite_sheet
+    };
+
+    world
+        .create_entity()
+        .with(sprite_render)
+        .with(Ship {
+            x: 50.0,
+            y: 50.0,
+        })
+        .with(ship_transform)
+        .build();
+    // world.insert(Ship {
+    //     x: 50.0,
+    //     y: 50.0,
+    // });
 }
 
 /// Initialises one ball in the middle-ish of the arena.

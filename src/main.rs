@@ -134,6 +134,16 @@ impl Component for Paddle {
 }
 
 #[derive(Default)]
+pub struct Ship {
+    pub x: f32,
+    pub y: f32,
+}
+
+impl Component for Ship {
+    type Storage = DenseVecStorage<Self>;
+}
+
+#[derive(Default)]
 pub struct ScoreBoard {
     score_left: i32,
     score_right: i32,
