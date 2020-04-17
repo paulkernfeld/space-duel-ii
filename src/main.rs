@@ -40,14 +40,7 @@ fn main() -> amethyst::Result<()> {
 
     let display_config_path = app_root.join("config/display.ron");
 
-    let key_bindings_path = {
-        if cfg!(feature = "sdl_controller") {
-            app_root.join("config/input_controller.ron")
-        } else {
-            app_root.join("config/input.ron")
-        }
-    };
-
+    let key_bindings_path = app_root.join("config/input.ron");
     let assets_dir = app_root.join("assets");
 
     let game_data = GameDataBuilder::default()
