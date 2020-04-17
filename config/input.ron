@@ -13,6 +13,10 @@
             pos: Key(Up),
             neg: Key(Down),
         ),
+        "ship_engine": Emulated(
+            pos: Key(Q),
+            neg: Key(A),
+        ),
     },
     actions: {
 

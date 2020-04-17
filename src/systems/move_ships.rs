@@ -3,6 +3,7 @@ use amethyst::{
     core::{timing::Time, transform::Transform},
     derive::SystemDesc,
     ecs::prelude::{Join, Read, System, SystemData, WriteStorage},
+    input::{InputHandler, StringBindings},
 };
 
 /// This system is responsible for moving all balls according to their speed
@@ -15,12 +16,16 @@ impl<'s> System<'s> for MoveShipsSystem {
         WriteStorage<'s, Ship>,
         WriteStorage<'s, Transform>,
         Read<'s, Time>,
+        Read<'s, InputHandler<StringBindings>>,
     );
 
-    fn run(&mut self, (mut ships, mut locals, time): Self::SystemData) {
+    fn run(&mut self, (mut ships, mut locals, time, input): Self::SystemData) {
         for (mut ship, local) in (&mut ships, &mut locals).join() {
-            ship.dx += 1.0 * time.delta_seconds();
-            ship.dy += 1.0 * time.delta_seconds();
+
+            let engine_acceleration = input.axis_value("ship_engine").unwrap();
+
+            ship.dx += engine_acceleration * time.delta_seconds();
+            ship.dy += engine_acceleration * time.delta_seconds();
             local.prepend_translation_x(ship.dx * time.delta_seconds());
             local.prepend_translation_y(ship.dy * time.delta_seconds());
 

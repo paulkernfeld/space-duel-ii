@@ -150,8 +150,8 @@ fn initialize_ship(world: &mut World, sprite_sheet_handle: Handle<SpriteSheet>) 
         .create_entity()
         .with(sprite_render)
         .with(Ship {
-            dx: 1.0,
-            dy: -1.0,
+            dx: 0.0,
+            dy: 0.0,
         })
         .with(ship_transform)
         .build();
