@@ -150,15 +150,11 @@ fn initialize_ship(world: &mut World, sprite_sheet_handle: Handle<SpriteSheet>) 
         .create_entity()
         .with(sprite_render)
         .with(Ship {
-            x: 50.0,
-            y: 50.0,
+            dx: 1.0,
+            dy: -1.0,
         })
         .with(ship_transform)
         .build();
-    // world.insert(Ship {
-    //     x: 50.0,
-    //     y: 50.0,
-    // });
 }
 
 /// Initialises one ball in the middle-ish of the arena.
