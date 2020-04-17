@@ -14,7 +14,7 @@ pub struct Pong {
 }
 
 impl SimpleState for Pong {
-    fn on_start(&mut self, _data: StateData<'_, GameData<'_, '_>>) {
+    fn on_start(&mut self, data: StateData<'_, GameData<'_, '_>>) {
         let StateData { world, .. } = data;
 
         // Wait one second before spawning the ball.
@@ -28,7 +28,7 @@ impl SimpleState for Pong {
         initialise_camera(world);
     }
 
-    fn update(&mut self, data: &mut StateData<'_, GameData<'_, '_>>) -> SimpleTrans {
+    fn update(&mut self, _data: &mut StateData<'_, GameData<'_, '_>>) -> SimpleTrans {
         Trans::None
     }
 }
