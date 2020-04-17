@@ -17,7 +17,6 @@ pub struct Pong {
 impl SimpleState for Pong {
     fn on_start(&mut self, data: StateData<'_, GameData<'_, '_>>) {
         let StateData { world, .. } = data;
-        use crate::audio::initialise_audio;
 
         // Wait one second before spawning the ball.
         self.ball_spawn_timer.replace(1.0);
@@ -29,7 +28,6 @@ impl SimpleState for Pong {
         initialise_paddles(world, self.sprite_sheet_handle.clone().unwrap());
         initialize_ship(world, self.sprite_sheet_handle.clone().unwrap());
         initialise_camera(world);
-        initialise_audio(world);
         initialise_score(world);
     }
 

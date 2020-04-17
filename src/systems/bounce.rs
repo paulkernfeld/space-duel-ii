@@ -1,7 +1,6 @@
-use crate::{audio::{play_bounce, Sounds}, Ball, Paddle, Side, Ship};
+use crate::{Ball, Paddle, Side, Ship};
 use amethyst::{
     assets::AssetStorage,
-    audio::{output::Output, Source},
     core::transform::Transform,
     derive::SystemDesc,
     ecs::prelude::{Join, Read, ReadExpect, ReadStorage, System, SystemData, WriteStorage},
@@ -18,14 +17,11 @@ impl<'s> System<'s> for BounceSystem {
         ReadStorage<'s, Paddle>,
         ReadStorage<'s, Ship>,
         ReadStorage<'s, Transform>,
-        Read<'s, AssetStorage<Source>>,
-        ReadExpect<'s, Sounds>,
-        Option<Read<'s, Output>>,
     );
 
     fn run(
         &mut self,
-        (mut balls, paddles, ships, transforms, storage, sounds, audio_output): Self::SystemData,
+        (mut balls, paddles, ships, transforms): Self::SystemData,
     ) {
         // Check whether a ball collided, and bounce off accordingly.
         //
@@ -42,7 +38,6 @@ impl<'s> System<'s> for BounceSystem {
                 || (ball_y >= ARENA_HEIGHT - ball.radius && ball.velocity[1] > 0.0)
             {
                 ball.velocity[1] = -ball.velocity[1];
-                play_bounce(&*sounds, &storage, audio_output.as_deref());
             }
 
             // Bounce at the paddles.
@@ -66,7 +61,6 @@ impl<'s> System<'s> for BounceSystem {
                     || (paddle.side == Side::Right && ball.velocity[0] > 0.0))
                 {
                     ball.velocity[0] = -ball.velocity[0];
-                    play_bounce(&*sounds, &storage, audio_output.as_deref());
                 }
             }
         }
