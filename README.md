@@ -12,10 +12,9 @@ To run this, do `cargo run`. It should "just work."
 
 # TODO
 
-1. Investigate [Amethyst physics engine](https://docs.rs/amethyst_physics)
-2. Get the ship moving with fixed acceleration
-3. Ship bounces off edges
-4. Control ship with keyboard
+1. Get the ship moving with fixed acceleration
+2. Ship bounces off edges
+3. Control ship with keyboard
 
 # Choosing a game engine
 
