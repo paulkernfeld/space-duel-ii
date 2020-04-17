@@ -1,4 +1,4 @@
-use crate::systems::{BounceSystem, MoveShipsSystem, PaddleSystem, WinnerSystem};
+use crate::systems::MoveShipsSystem;
 use amethyst::{
     core::bundle::SystemBundle,
     ecs::prelude::{DispatcherBuilder, World},
@@ -15,18 +15,7 @@ impl<'a, 'b> SystemBundle<'a, 'b> for PongBundle {
         _world: &mut World,
         builder: &mut DispatcherBuilder<'a, 'b>,
     ) -> Result<(), Error> {
-        builder.add(PaddleSystem, "paddle_system", &["input_system"]);
         builder.add(MoveShipsSystem, "ship_system", &[]);
-        builder.add(
-            BounceSystem,
-            "collision_system",
-            &["paddle_system"],
-        );
-        builder.add(
-            WinnerSystem,
-            "winner_system",
-            &["paddle_system"],
-        );
         Ok(())
     }
 }
