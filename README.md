@@ -1,6 +1,6 @@
 # Space Duel II
 
-I'm [coding this live on Twitch right now](https://www.twitch.tv/occupy_paul_st).
+I'll be [coding this live on Twitch](https://www.twitch.tv/occupy_paul_st) on Sunday 2020-04-19.
 
 ![Space Duel](space-duel1.png)
 
@@ -14,11 +14,17 @@ To get involved, check out the issues page!
 
 # TODO
 
-1. Control ship with keyboard
+1. User can rotate ship
+2. User can accelerate (but not decelerate)
+3. Bullet moves across screen
+4. When bullet collides with ship, bullet disappears
+5. Ship looks like a ship
+6. Pong elements are removed
+7. Bullets spawn at edges of arena, shooting in
 
 # Choosing a game engine
 
-**The result:** Amethyst seems to be most mature, well-documented, and doesn't explicitly not support MacOS
+The result: **Amethyst** seems to be most mature, well-documented, and doesn't explicitly not support MacOS
 
 Since I'm planning to spend single-digit hours on this project and I haven't made a game in Rust before, I want to choose a game engine that will let me get started easily. Choosing the right game engine for this kind of project could have a multiplicative effect on my productivity. I'm going to start with a shortlist of Rust game engines that I've heard of. I'm using [Are we game yet?](https://arewegameyet.com/ecosystem/engines/) as a reference. I'm going to choose from:
 
