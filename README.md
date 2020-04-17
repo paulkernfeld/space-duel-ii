@@ -39,7 +39,7 @@ What I don't really need:
 - Has a [pong tutorial](https://book.amethyst.rs/stable/pong-tutorial.html), which seems relevant
 - Robust-looking [Learn](https://amethyst.rs/doc) page. Even has [a book](https://book.amethyst.rs/stable/)!
 - Looks pretty serious
-- Emphasis on high performance via  
+- Emphasis on high performance via [Specs ECS](https://docs.rs/crate/specs)  
 - Uses the `gfx-rs`, which I think is cool
 
 ## Piston
