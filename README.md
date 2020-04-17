@@ -2,6 +2,8 @@
 
 I'm [coding this live on Twitch right now](https://www.twitch.tv/occupy_paul_st).
 
+![Space Duel](space-duel1.png)
+
 I'm attempting to make a sequel to [Space Duel](https://paulkernfeld.com/2012/07/16/space-duel.html), a local multiplayer asteroids-style game that I made in high school. Who is better at programming: 15-year-old me or 30-year-old me?
 
 The goals of this project are to have fun, learn some new things, and try to make a game!
