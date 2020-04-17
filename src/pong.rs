@@ -1,7 +1,7 @@
-use crate::{ARENA_HEIGHT, ARENA_WIDTH, Ship};
+use crate::{Ship, ARENA_HEIGHT, ARENA_WIDTH};
 use amethyst::{
     assets::{AssetStorage, Handle, Loader},
-    core::{transform::Transform},
+    core::transform::Transform,
     ecs::prelude::World,
     prelude::*,
     renderer::{Camera, ImageFormat, SpriteRender, SpriteSheet, SpriteSheetFormat, Texture},
@@ -85,10 +85,7 @@ fn initialize_ship(world: &mut World, sprite_sheet_handle: Handle<SpriteSheet>) 
     world
         .create_entity()
         .with(sprite_render)
-        .with(Ship {
-            dx: 0.0,
-            dy: 0.0,
-        })
+        .with(Ship { dx: 0.0, dy: 0.0 })
         .with(ship_transform)
         .build();
 }

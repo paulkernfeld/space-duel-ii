@@ -1,4 +1,4 @@
-use crate::{Ship, ARENA_WIDTH, ARENA_HEIGHT};
+use crate::{Ship, ARENA_HEIGHT, ARENA_WIDTH};
 use amethyst::{
     core::{timing::Time, transform::Transform},
     derive::SystemDesc,
@@ -21,7 +21,6 @@ impl<'s> System<'s> for MoveShipsSystem {
 
     fn run(&mut self, (mut ships, mut locals, time, input): Self::SystemData) {
         for (mut ship, local) in (&mut ships, &mut locals).join() {
-
             let engine_acceleration = input.axis_value("ship_engine").unwrap();
 
             ship.dx += engine_acceleration * time.delta_seconds();
