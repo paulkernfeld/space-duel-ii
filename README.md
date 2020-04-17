@@ -14,8 +14,7 @@ To get involved, check out the issues page!
 
 # TODO
 
-1. Ship bounces off edges
-2. Control ship with keyboard
+1. Control ship with keyboard
 
 # Choosing a game engine
 
