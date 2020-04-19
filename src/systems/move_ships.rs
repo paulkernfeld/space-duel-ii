@@ -29,8 +29,10 @@ impl<'s> System<'s> for MoveShipsSystem {
 
             let (_, _, ship_angle) = local.euler_angles();
 
-            ship.dx += ship_angle.cos() * engine_acceleration * time.delta_seconds() * SHIP_ENGINE_POWER;
-            ship.dy += ship_angle.sin() * engine_acceleration * time.delta_seconds() * SHIP_ENGINE_POWER;
+            ship.dx +=
+                ship_angle.cos() * engine_acceleration * time.delta_seconds() * SHIP_ENGINE_POWER;
+            ship.dy +=
+                ship_angle.sin() * engine_acceleration * time.delta_seconds() * SHIP_ENGINE_POWER;
             local.prepend_translation_x(ship.dx * time.delta_seconds());
             local.prepend_translation_y(ship.dy * time.delta_seconds());
             local.prepend_rotation_z_axis(rudder * time.delta_seconds() * SHIP_RUDDER_POWER);

@@ -1,8 +1,8 @@
 use crate::{Bullet, Ship, ARENA_HEIGHT, ARENA_WIDTH};
 use amethyst::{
     assets::{AssetStorage, Handle, Loader},
-    core::transform::Transform,
     core::math::Vector3,
+    core::transform::Transform,
     ecs::prelude::World,
     prelude::*,
     renderer::{Camera, ImageFormat, SpriteRender, SpriteSheet, SpriteSheetFormat, Texture},
@@ -31,7 +31,9 @@ impl SimpleState for Game {
         initialise_camera(world);
     }
 
-    fn update(&mut self, _data: &mut StateData<'_, GameData<'_, '_>>) -> SimpleTrans {
+    fn update(&mut self, data: &mut StateData<'_, GameData<'_, '_>>) -> SimpleTrans {
+        data.world.maintain();
+
         Trans::None
     }
 }
