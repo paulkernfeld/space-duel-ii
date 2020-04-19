@@ -2,6 +2,7 @@ use crate::{Ship, ARENA_HEIGHT, ARENA_WIDTH};
 use amethyst::{
     assets::{AssetStorage, Handle, Loader},
     core::transform::Transform,
+    core::math::Vector3,
     ecs::prelude::World,
     prelude::*,
     renderer::{Camera, ImageFormat, SpriteRender, SpriteSheet, SpriteSheetFormat, Texture},
@@ -43,7 +44,7 @@ fn load_sprite_sheet(world: &mut World) -> Handle<SpriteSheet> {
         let loader = world.read_resource::<Loader>();
         let texture_storage = world.read_resource::<AssetStorage<Texture>>();
         loader.load(
-            "texture/pong_spritesheet.png",
+            "texture/ship.png",
             ImageFormat::default(),
             (),
             &texture_storage,
@@ -53,7 +54,7 @@ fn load_sprite_sheet(world: &mut World) -> Handle<SpriteSheet> {
     let loader = world.read_resource::<Loader>();
     let sprite_sheet_store = world.read_resource::<AssetStorage<SpriteSheet>>();
     loader.load(
-        "texture/pong_spritesheet.ron", // Here we load the associated ron file
+        "texture/ship_spritesheet.ron", // Here we load the associated ron file
         SpriteSheetFormat(texture_handle), // We pass it the texture we want it to use
         (),
         &sprite_sheet_store,
@@ -76,10 +77,11 @@ fn initialise_camera(world: &mut World) {
 fn initialize_ship(world: &mut World, sprite_sheet_handle: Handle<SpriteSheet>) {
     let mut ship_transform = Transform::default();
     ship_transform.set_translation_xyz(ARENA_WIDTH / 2.0, ARENA_HEIGHT / 2.0, 0.0);
+    ship_transform.set_scale(Vector3::new(0.1f32, 0.1f32, 0.1f32));
 
     let sprite_render = SpriteRender {
         sprite_sheet: sprite_sheet_handle,
-        sprite_number: 0, // paddle is the first sprite in the sprite_sheet
+        sprite_number: 0,
     };
 
     world
