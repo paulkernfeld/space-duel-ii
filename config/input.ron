@@ -5,6 +5,10 @@
 
 (
     axes: {
+        "ship_rudder": Emulated(
+            pos: Key(Right),
+            neg: Key(Left),
+        ),
         "ship_engine": Emulated(
             pos: Key(Up),
             neg: Key(Down),

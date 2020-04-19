@@ -21,12 +21,16 @@ impl<'s> System<'s> for MoveShipsSystem {
 
     fn run(&mut self, (mut ships, mut locals, time, input): Self::SystemData) {
         for (mut ship, local) in (&mut ships, &mut locals).join() {
+            let rudder = input.axis_value("ship_rudder").unwrap();
             let engine_acceleration = input.axis_value("ship_engine").unwrap();
+
+            let local: &mut Transform = local;
 
             ship.dx += engine_acceleration * time.delta_seconds();
             ship.dy += engine_acceleration * time.delta_seconds();
             local.prepend_translation_x(ship.dx * time.delta_seconds());
             local.prepend_translation_y(ship.dy * time.delta_seconds());
+            local.prepend_rotation_z_axis(rudder * time.delta_seconds() * 1.0);
 
             let mut ship_x = local.translation().x;
             let mut ship_y = local.translation().y;
