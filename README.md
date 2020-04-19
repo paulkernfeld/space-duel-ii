@@ -8,13 +8,12 @@ I'm attempting to make a sequel to [Space Duel](https://paulkernfeld.com/2012/07
 
 The goals of this project are to have fun, learn some new things, and try to make a game!
 
-To run this, do `cargo run`. It should "just work."
+To run this on MacOS, do `cargo run`. On other systems, try `cargo run --no-default-features --features vulkan`.
 
 To get involved, check out the issues page!
 
 # TODO
 
-1. Project can run on not MacOS
 1. Bullet moves across screen
 1. When bullet collides with ship, bullet disappears
 1. Ship looks like a ship

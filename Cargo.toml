@@ -9,4 +9,9 @@ edition = "2018"
 [dependencies.amethyst]
 version = "0.15"
 default-features = false
-features = ["metal"]
+
+[features]
+default = ["metal"]
+empty = ["amethyst/empty"]
+metal = ["amethyst/metal"]
+vulkan = ["amethyst/vulkan"]
