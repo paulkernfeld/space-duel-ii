@@ -2,6 +2,7 @@ use crate::{Bullet, Ship, ARENA_HEIGHT, ARENA_WIDTH};
 use amethyst::{
     assets::{AssetStorage, Handle, Loader},
     core::math::Vector3,
+    core::timing::Time,
     core::transform::Transform,
     ecs::prelude::World,
     prelude::*,
@@ -11,7 +12,7 @@ use std::f32::consts::PI;
 
 #[derive(Default)]
 pub struct Game {
-    ball_spawn_timer: Option<f32>,
+    bullet_spawn_timer: f32,
     sprite_sheet_handle: Option<Handle<SpriteSheet>>,
 }
 
@@ -20,7 +21,7 @@ impl SimpleState for Game {
         let StateData { world, .. } = data;
 
         // Wait one second before spawning the ball.
-        self.ball_spawn_timer.replace(1.0);
+        self.bullet_spawn_timer = 1.0;
 
         // Load the spritesheet necessary to render the graphics.
         // `spritesheet` is the layout of the sprites on the image;
@@ -33,6 +34,16 @@ impl SimpleState for Game {
 
     fn update(&mut self, data: &mut StateData<'_, GameData<'_, '_>>) -> SimpleTrans {
         data.world.maintain();
+
+        {
+            let time = data.world.fetch::<Time>();
+            self.bullet_spawn_timer -= time.delta_seconds();
+        }
+
+        if self.bullet_spawn_timer <= 0.0 {
+            self.bullet_spawn_timer += 1.0;
+            initialize_bullet(data.world, self.sprite_sheet_handle.clone().unwrap());
+        }
 
         Trans::None
     }
