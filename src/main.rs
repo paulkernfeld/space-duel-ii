@@ -74,3 +74,13 @@ pub struct Ship {
 impl Component for Ship {
     type Storage = DenseVecStorage<Self>;
 }
+
+#[derive(Default)]
+pub struct Bullet {
+    pub dx: f32,
+    pub dy: f32,
+}
+
+impl Component for Bullet {
+    type Storage = DenseVecStorage<Self>;
+}

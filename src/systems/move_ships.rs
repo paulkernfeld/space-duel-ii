@@ -9,8 +9,6 @@ use amethyst::{
 const SHIP_ENGINE_POWER: f32 = 4.0;
 const SHIP_RUDDER_POWER: f32 = 2.0;
 
-/// This system is responsible for moving all balls according to their speed
-/// and the time passed.
 #[derive(SystemDesc)]
 pub struct MoveShipsSystem;
 
@@ -23,11 +21,11 @@ impl<'s> System<'s> for MoveShipsSystem {
     );
 
     fn run(&mut self, (mut ships, mut locals, time, input): Self::SystemData) {
-        for (mut ship, local) in (&mut ships, &mut locals).join() {
+        for (mut ship, transform) in (&mut ships, &mut locals).join() {
             let rudder = input.axis_value("ship_rudder").unwrap();
             let engine_acceleration = input.axis_value("ship_engine").unwrap();
 
-            let local: &mut Transform = local;
+            let local: &mut Transform = transform;
 
             let (_, _, ship_angle) = local.euler_angles();
 

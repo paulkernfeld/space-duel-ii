@@ -1,4 +1,4 @@
-use crate::{Ship, ARENA_HEIGHT, ARENA_WIDTH};
+use crate::{Bullet, Ship, ARENA_HEIGHT, ARENA_WIDTH};
 use amethyst::{
     assets::{AssetStorage, Handle, Loader},
     core::transform::Transform,
@@ -7,6 +7,7 @@ use amethyst::{
     prelude::*,
     renderer::{Camera, ImageFormat, SpriteRender, SpriteSheet, SpriteSheetFormat, Texture},
 };
+use std::f32::consts::PI;
 
 #[derive(Default)]
 pub struct Game {
@@ -26,6 +27,7 @@ impl SimpleState for Game {
         // `texture` is the pixel data.
         self.sprite_sheet_handle.replace(load_sprite_sheet(world));
         initialize_ship(world, self.sprite_sheet_handle.clone().unwrap());
+        initialize_bullet(world, self.sprite_sheet_handle.clone().unwrap());
         initialise_camera(world);
     }
 
@@ -89,5 +91,24 @@ fn initialize_ship(world: &mut World, sprite_sheet_handle: Handle<SpriteSheet>) 
         .with(sprite_render)
         .with(Ship { dx: 0.0, dy: 0.0 })
         .with(ship_transform)
+        .build();
+}
+
+fn initialize_bullet(world: &mut World, sprite_sheet_handle: Handle<SpriteSheet>) {
+    let mut transform = Transform::default();
+    transform.set_translation_xyz(ARENA_WIDTH / 2.0, ARENA_HEIGHT / 2.0, 0.0);
+    transform.set_rotation_2d(PI);
+    transform.set_scale(Vector3::new(0.05f32, 0.05f32, 0.05f32));
+
+    let sprite_render = SpriteRender {
+        sprite_sheet: sprite_sheet_handle,
+        sprite_number: 0,
+    };
+
+    world
+        .create_entity()
+        .with(sprite_render)
+        .with(Bullet { dx: 0.0, dy: 0.0 })
+        .with(transform)
         .build();
 }
