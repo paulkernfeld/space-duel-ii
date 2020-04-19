@@ -14,13 +14,11 @@ To get involved, check out the issues page!
 
 # TODO
 
-1. User can rotate ship
-2. User can accelerate (but not decelerate)
-3. Bullet moves across screen
-4. When bullet collides with ship, bullet disappears
-5. Ship looks like a ship
-6. Pong elements are removed
-7. Bullets spawn at edges of arena, shooting in
+1. Bullet moves across screen
+1. When bullet collides with ship, bullet disappears
+1. Ship looks like a ship
+1. Pong elements are removed
+1. Bullets spawn at edges of arena, shooting in
 
 # Choosing a game engine
 

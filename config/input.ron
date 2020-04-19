@@ -11,7 +11,7 @@
         ),
         "ship_engine": Emulated(
             pos: Key(Up),
-            neg: Key(Down),
+            neg: Key(Yen), // You may only reverse the ship if you have a yen key on your keyboard
         ),
     },
     actions: {
