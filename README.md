@@ -1,7 +1,5 @@
 # Space Duel II
 
-I'm [coding this live on Twitch](https://www.twitch.tv/occupy_paul_st) right now.
-
 ![Space Duel](space-duel1.png)
 
 I'm attempting to make a sequel to [Space Duel](https://paulkernfeld.com/2012/07/16/space-duel.html), a local multiplayer asteroids-style game that I made in high school. Who is better at programming: 15-year-old me or 30-year-old me?
@@ -14,9 +12,11 @@ To get involved, check out the issues page!
 
 # TODO
 
-1. Ship looks like a ship
-1. Pong elements are removed
-1. Bullets spawn at edges of arena, shooting in
+1. bullets spawn from all edges of arena
+1. bullets spawn at random angles
+1. arena is bigger relative to objects in it
+1. more projectile (slow-moving tracking projectile?)
+1. particle effects
 
 # Choosing a game engine
 

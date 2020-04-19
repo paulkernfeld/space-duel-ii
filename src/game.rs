@@ -92,7 +92,7 @@ fn initialise_camera(world: &mut World) {
 fn initialize_ship(world: &mut World, sprite_sheet_handle: Handle<SpriteSheet>) {
     let mut ship_transform = Transform::default();
     ship_transform.set_translation_xyz(ARENA_WIDTH / 2.0, ARENA_HEIGHT / 2.0, 0.0);
-    ship_transform.set_scale(Vector3::new(0.1f32, 0.1f32, 0.1f32));
+    ship_transform.set_scale(Vector3::new(0.05f32, 0.05f32, 0.05f32));
 
     let sprite_render = SpriteRender {
         sprite_sheet: sprite_sheet_handle,
@@ -109,9 +109,10 @@ fn initialize_ship(world: &mut World, sprite_sheet_handle: Handle<SpriteSheet>) 
 
 fn initialize_bullet(world: &mut World, sprite_sheet_handle: Handle<SpriteSheet>) {
     let mut transform = Transform::default();
-    transform.set_translation_xyz(ARENA_WIDTH / 2.0, ARENA_HEIGHT / 2.0, 0.0);
+
+    transform.set_translation_xyz(ARENA_WIDTH, ARENA_HEIGHT * rand::random::<f32>(), 0.0);
     transform.set_rotation_2d(PI);
-    transform.set_scale(Vector3::new(0.05f32, 0.05f32, 0.05f32));
+    transform.set_scale(Vector3::new(0.02f32, 0.02f32, 0.02f32));
 
     let sprite_render = SpriteRender {
         sprite_sheet: sprite_sheet_handle,

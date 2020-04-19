@@ -21,7 +21,7 @@ use std::time::Duration;
 
 const ARENA_HEIGHT: f32 = 100.0;
 const ARENA_WIDTH: f32 = 100.0;
-const SHIP_RADIUS: f32 = 5.0;
+const SHIP_RADIUS: f32 = 7.0;
 
 fn main() -> amethyst::Result<()> {
     amethyst::start_logger(Default::default());
@@ -49,7 +49,7 @@ fn main() -> amethyst::Result<()> {
                 // drawing on it
                 .with_plugin(
                     RenderToWindow::from_config_path(display_config_path)?
-                        .with_clear([1.0, 0.5, 0.0, 1.0]),
+                        .with_clear([0.0, 0.0, 0.0, 1.0]),
                 )
                 .with_plugin(RenderFlat2D::default())
                 .with_plugin(RenderUi::default()),
