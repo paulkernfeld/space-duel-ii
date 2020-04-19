@@ -6,6 +6,9 @@ use amethyst::{
     input::{InputHandler, StringBindings},
 };
 
+const SHIP_ENGINE_POWER: f32 = 4.0;
+const SHIP_RUDDER_POWER: f32 = 2.0;
+
 /// This system is responsible for moving all balls according to their speed
 /// and the time passed.
 #[derive(SystemDesc)]
@@ -26,11 +29,13 @@ impl<'s> System<'s> for MoveShipsSystem {
 
             let local: &mut Transform = local;
 
-            ship.dx += engine_acceleration * time.delta_seconds();
-            ship.dy += engine_acceleration * time.delta_seconds();
+            let (_, _, ship_angle) = local.euler_angles();
+
+            ship.dx += ship_angle.cos() * engine_acceleration * time.delta_seconds() * SHIP_ENGINE_POWER;
+            ship.dy += ship_angle.sin() * engine_acceleration * time.delta_seconds() * SHIP_ENGINE_POWER;
             local.prepend_translation_x(ship.dx * time.delta_seconds());
             local.prepend_translation_y(ship.dy * time.delta_seconds());
-            local.prepend_rotation_z_axis(rudder * time.delta_seconds() * 1.0);
+            local.prepend_rotation_z_axis(rudder * time.delta_seconds() * SHIP_RUDDER_POWER);
 
             let mut ship_x = local.translation().x;
             let mut ship_y = local.translation().y;
