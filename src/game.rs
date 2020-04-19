@@ -121,7 +121,7 @@ fn initialize_bullet(world: &mut World, sprite_sheet_handle: Handle<SpriteSheet>
     world
         .create_entity()
         .with(sprite_render)
-        .with(Bullet { dx: 0.0, dy: 0.0 })
+        .with(Bullet { })
         .with(transform)
         .build();
 }

@@ -1,3 +1,4 @@
+pub mod collide_bullet_ship;
 mod move_bullets;
 mod move_ships;
 

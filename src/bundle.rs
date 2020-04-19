@@ -1,4 +1,5 @@
 use crate::systems::{MoveBulletsSystem, MoveShipsSystem};
+use crate::systems::collide_bullet_ship::CollideBulletShipSystem;
 use amethyst::{
     core::bundle::SystemBundle,
     ecs::prelude::{DispatcherBuilder, World},
@@ -15,6 +16,7 @@ impl<'a, 'b> SystemBundle<'a, 'b> for SpaceDuelBundle {
     ) -> Result<(), Error> {
         builder.add(MoveShipsSystem, "move_ships_system", &[]);
         builder.add(MoveBulletsSystem, "move_bullet_system", &[]);
+        builder.add(CollideBulletShipSystem, "collide_bullet_ship_system", &["move_ships_system", "move_bullet_system"]);
         Ok(())
     }
 }

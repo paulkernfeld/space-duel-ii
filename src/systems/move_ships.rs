@@ -6,7 +6,7 @@ use amethyst::{
     input::{InputHandler, StringBindings},
 };
 
-const SHIP_ENGINE_POWER: f32 = 4.0;
+const SHIP_ENGINE_POWER: f32 = 10.0;
 const SHIP_RUDDER_POWER: f32 = 2.0;
 
 #[derive(SystemDesc)]

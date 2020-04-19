@@ -19,7 +19,7 @@ impl<'s> System<'s> for MoveBulletsSystem {
     );
 
     fn run(&mut self, (entities, mut bullets, mut transforms, time): Self::SystemData) {
-        for (entity, bullet, transform) in (&*entities, &mut bullets, &mut transforms).join() {
+        for (entity, _bullet, transform) in (&*entities, &mut bullets, &mut transforms).join() {
             let local: &mut Transform = transform;
 
             let (_, _, bullet_angle) = local.euler_angles();

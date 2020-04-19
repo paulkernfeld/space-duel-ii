@@ -21,6 +21,7 @@ use std::time::Duration;
 
 const ARENA_HEIGHT: f32 = 100.0;
 const ARENA_WIDTH: f32 = 100.0;
+const SHIP_RADIUS: f32 = 5.0;
 
 fn main() -> amethyst::Result<()> {
     amethyst::start_logger(Default::default());
@@ -75,10 +76,9 @@ impl Component for Ship {
     type Storage = DenseVecStorage<Self>;
 }
 
+/// This is a type-level flag to indicate that something is a bullet, I guess
 #[derive(Default)]
 pub struct Bullet {
-    pub dx: f32,
-    pub dy: f32,
 }
 
 impl Component for Bullet {
