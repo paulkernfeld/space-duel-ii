@@ -1,6 +1,6 @@
 # Space Duel II
 
-I'll be [coding this live on Twitch](https://www.twitch.tv/occupy_paul_st) on Sunday 2020-04-19.
+I'm [coding this live on Twitch](https://www.twitch.tv/occupy_paul_st) right now.
 
 ![Space Duel](space-duel1.png)
 
